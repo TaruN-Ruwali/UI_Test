@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard | Secure Portal</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Auth Guard: Ensure only authenticated user can view dashboard -->
+  <script>
+    if (sessionStorage.getItem('currentUser') !== 'abc@gmail.com') {
+      window.location.replace('home.html');
+    }
+  </script>
+</head>
+<body>
+  <!-- ==================== DASHBOARD VIEW ==================== -->
+  <div class="dashboard-container">
+    <!-- Top Navigation Bar -->
+    <header class="top-nav">
+      <div class="nav-brand">
+        <div class="logo-badge-small">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect width="18" height="11" x="3" y="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+        </div>
+        <span class="brand-title">Admin Dashboard</span>
+      </div>
+
+      <div class="nav-user-actions">
+        <div class="user-chip">
+          <div class="avatar">A</div>
+          <div class="user-meta">
+            <span class="user-name">Administrator</span>
+            <span class="user-email" id="userEmailDisplay">abc@gmail.com</span>
+          </div>
+        </div>
+        <button id="logoutBtn" class="logout-btn" title="Sign out">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+            <polyline points="16 17 21 12 16 7" />
+            <line x1="21" y1="12" x2="9" y2="12" />
+          </svg>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="dashboard-content">
+      <!-- Welcome Hero Banner -->
+      <section class="welcome-hero">
+        <div class="hero-text">
+          <h1>Welcome back, <span class="highlight-text">Admin</span> 👋</h1>
+          <p>You have successfully authenticated with ID <strong>abc@gmail.com</strong>. All systems are operational.</p>
+        </div>
+        <div class="hero-status">
+          <span class="status-indicator-dot"></span>
+          <span>Security Status: <strong>Verified</strong></span>
+        </div>
+      </section>
+
+      <!-- Key Metrics Cards -->
+      <section class="metrics-grid">
+        <div class="stat-card">
+          <div class="stat-icon icon-blue">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Active Users</span>
+            <h3 class="stat-value">1,482</h3>
+            <span class="stat-trend trend-up">↑ 12% this week</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-emerald">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20" />
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Monthly Revenue</span>
+            <h3 class="stat-value">$48,290</h3>
+            <span class="stat-trend trend-up">↑ 8.4% vs last month</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-purple">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">System Performance</span>
+            <h3 class="stat-value">99.98%</h3>
+            <span class="stat-trend trend-neutral">Uptime optimal</span>
+          </div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon icon-amber">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
+            </svg>
+          </div>
+          <div class="stat-info">
+            <span class="stat-label">Security Alerts</span>
+            <h3 class="stat-value">0</h3>
+            <span class="stat-trend trend-up">Zero vulnerabilities</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dashboard Sections: Activities & Quick Actions -->
+      <div class="content-columns">
+        <!-- Recent Activities Table -->
+        <section class="panel-card activity-panel">
+          <div class="panel-header">
+            <h3>Recent System Logins & Activities</h3>
+            <span class="badge">Live</span>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Event</th>
+                  <th>User ID</th>
+                  <th>Time</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="activityTableBody">
+                <tr>
+                  <td>Current Session Login</td>
+                  <td>abc@gmail.com</td>
+                  <td>Just now</td>
+                  <td><span class="pill pill-success">Authenticated</span></td>
+                </tr>
+                <tr>
+                  <td>Database Backup Sync</td>
+                  <td>system_cron</td>
+                  <td>14 mins ago</td>
+                  <td><span class="pill pill-info">Completed</span></td>
+                </tr>
+                <tr>
+                  <td>Access Rule Verified</td>
+                  <td>security_audit</td>
+                  <td>1 hour ago</td>
+                  <td><span class="pill pill-info">Passed</span></td>
+                </tr>
+                <tr>
+                  <td>Failed Access Attempt</td>
+                  <td>unknown@test.com</td>
+                  <td>3 hours ago</td>
+                  <td><span class="pill pill-danger">Blocked</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Quick Actions & Session Details -->
+        <section class="panel-card actions-panel">
+          <div class="panel-header">
+            <h3>Session Details</h3>
+          </div>
+          <div class="session-box">
+            <div class="session-row">
+              <span class="label">User Role:</span>
+              <span class="value font-semibold">Super Administrator</span>
+            </div>
+            <div class="session-row">
+              <span class="label">Authentication:</span>
+              <span class="value font-semibold">Password (Strict)</span>
+            </div>
+            <div class="session-row">
+              <span class="label">Session Started:</span>
+              <span class="value" id="loginTimeDisplay">--</span>
+            </div>
+            <div class="session-row">
+              <span class="label">Access Scope:</span>
+              <span class="value">Full Dashboard Access</span>
+            </div>
+          </div>
+
+          <div class="panel-header mt-4">
+            <h3>Quick Actions</h3>
+          </div>
+          <div class="action-buttons-list">
+            <button class="action-btn" onclick="alert('System diagnostics: All services operational.')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              Run System Diagnostics
+            </button>
+            <button class="action-btn" onclick="alert('Exporting audit log snapshot...')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download Access Logs
+            </button>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
+
